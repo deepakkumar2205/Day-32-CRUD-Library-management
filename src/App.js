@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import { CssVarsProvider } from '@mui/joy';
+import React, { useState } from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import Dashboard from './components/Dashboard';
+import Login from './components/Login';
+import store from './components/Store';
 
-function App() {
+function App(props) {
+
+
+  // let loggedin=
+   const [status,setStatus] = useState(localStorage.getItem('logginStatus'));
+  //  setLoggedin()
+  const handleStatus = ()=>{
+       setStatus(localStorage.getItem('logginStatus'))
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ToastContainer />
+      <Provider store ={store}>
+       <BrowserRouter>
+      {status !== 'slfjflsdj-sdfhsdofjsd-sflsdf-wsrhwejf' ?
+ <CssVarsProvider>
+       <Login handleStatus={handleStatus}/>
+ </CssVarsProvider> :
+       <Dashboard handleStatus={handleStatus}/>}
+       </BrowserRouter>
+       </Provider>
     </div>
   );
 }
+
 
 export default App;
