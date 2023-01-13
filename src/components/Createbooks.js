@@ -35,6 +35,7 @@ const  Createbooks = (props) => {
           country:"",
           language:"",
           pages:"",
+          link:"",
           year:""
         }
     }
@@ -61,7 +62,7 @@ const formik = useFormik({
         }
     },
     validate:(values)=>{
-      let {imageLink,title,author,country,language,pages,year}=values;
+      let {imageLink,title,author,country,language,pages,link,year}=values;
       let errors ={};
       if(!title){
         errors.title = "Title is Required."
@@ -72,6 +73,11 @@ const formik = useFormik({
         errors.imageLink = 'Image Url is required!'
       }else if(imageLink.length<15){
         errors.imageLink = 'Enter a valid Image Url!'
+      }
+      if(!link){
+        errors.link = 'wikipedia Url is required!'
+      }else if(link.length<15){
+        errors.link = 'Enter a valid wikipedia Url!'
       }
       if(!author){
         errors.author = 'Author name is required!'
@@ -127,6 +133,19 @@ const formik = useFormik({
           onChange={formik.handleChange}
           error={formik.errors.imageLink}
           helperText={formik.errors.imageLink?formik.errors.imageLink:'Enter valid image Url here'} 
+        />
+
+        <TextField autoFocus
+          id="outlined-basic"
+          sx={{m:1.5}} 
+          label="Wiki Url"
+          variant="outlined" 
+          disabled={state!==null?!state.update:false}
+          name='link'
+          value={formik.values.link}
+          onChange={formik.handleChange}
+          error={formik.errors.link}
+          helperText={formik.errors.link?formik.errors.link:'Enter valid Wiki Url here'} 
         />
 
         <TextField

@@ -42,7 +42,6 @@ export default function Login({handleStatus}) {
 
   const handleChange=(text)=>{
      setChange({...change,[text.target.name]:text.target.value})
-     console.log('trigering');
   }
   const handleSubmit = ()=>{
     if(change.email ==='enter@gmail.com' && change.password ==='authenticate'){

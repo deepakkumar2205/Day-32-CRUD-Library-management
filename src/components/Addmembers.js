@@ -39,6 +39,7 @@ import './AddMembers.css'
   }
 
   const formik=useFormik({
+    // this will control the formic onsubmit function
     initialValues:init(),
     enableReinitialize:data,
     onSubmit:(values)=>{
@@ -51,6 +52,7 @@ import './AddMembers.css'
      }
     },
     validate:(values)=>{
+      //formic error validation
       let {name,image,age,books,joindate,phone,address}=values
       let errors={};
       if(!name){
@@ -106,6 +108,7 @@ import './AddMembers.css'
           noValidate
           autoComplete="off">
         <div>
+          {/* bellow fiend is used to create and add update and view the members in library */}
           <TextField
            required
            className='tf'
@@ -205,6 +208,7 @@ import './AddMembers.css'
 }
 
 const mapStateToProps = (state)=>({
+  //this is used to get the data and show in field .
    viewUpdate: async(id)=>{
    const res = await axios.get(`https://636c8f127f47ef51e14ba6ab.mockapi.io/members/${id}`)
    const data = await res.data
@@ -213,6 +217,7 @@ const mapStateToProps = (state)=>({
 })
 
 const mapDispatchToProps = (dispatch)=>({
+  // this is used to update the members into mocka api and also the books list
    update:(data)=>{
      axios.put(`https://636c8f127f47ef51e14ba6ab.mockapi.io/members/${data.id}`,data)
      .then((data)=>{
@@ -223,6 +228,7 @@ const mapDispatchToProps = (dispatch)=>({
    
    },
    create:(data)=>{
+    //this is used to create the field.
     axios.post(`https://636c8f127f47ef51e14ba6ab.mockapi.io/members`,data)
     .then((data)=>{
       axios.get(`https://636c8f127f47ef51e14ba6ab.mockapi.io/members`,data).then((data)=>{

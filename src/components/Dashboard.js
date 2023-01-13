@@ -43,6 +43,7 @@ import Members from './Members';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import { ProtectedRoutes } from './ProtectedRoutes';
 
+//search bar and top bar code are shown bellow:
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -150,6 +151,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+//!dashbard funcion component is started from here
 function Dashboard(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
